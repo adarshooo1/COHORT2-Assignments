@@ -5,11 +5,11 @@
   - Output: 9
 */
 
-function findLargestElement(number) {
-  if (number.length === 0) {
+function findLargestElement(numbers) {
+  if (numbers.length === 0) {
     return undefined; // or handle empty array case accordingly
   }
-  return Math.max(...number);
+  return Math.max(...numbers);
 }
 
 module.exports = findLargestElement;

@@ -16,6 +16,70 @@
   Once you've implemented the logic, test your code by running
 */
 
-class Calculator {}
+class Calculator {
+  // constructor function
+  constructor() {
+    this.result = 0;
+  }
+
+  // Method of adding number;
+  add(number) {
+    // if (typeof number !== number) {
+    //   throw new Error("Invalid Type Input, Please write a valid number");
+    // }
+    this.result += number;
+  }
+
+  subtract(number) {
+    // if (typeof number !== number) {
+    //   throw new Error("Invalid Type Input, Please write a valid number");
+    // }
+    this.result -= number;
+  }
+
+  multiply(number) {
+    // if (typeof number !== number) {
+    //   throw new Error("Invalid Type Input, Please write a valid number");
+    // }
+    this.result *= number;
+  }
+  divide(number) {
+    if (typeof number !== "number") {
+      throw new Error("Invalid Type Input, Please write a valid number");
+    }
+    // It's also a good practice to check for division by zero
+    if (number === 0) {
+      throw new Error();
+    }
+    this.result /= number;
+  }
+
+  clear() {
+    this.result = 0;
+  }
+
+  getResult() {
+    return this.result;
+  }
+
+  calculate(expression) {
+    // Remove multiple continuous spaces and trim leading and trailing spaces.s
+    const cleanedExpression = expression.replace(/\s+/g, " ").trim();
+
+    // If there are non-numerical character in the Expression.
+    if (!/^[0-9\s+\-*/().]+$/.test(cleanedExpression)) {
+      throw new Error("Invalid characters in the expression");
+    }
+
+    try {
+      this.result = eval(cleanedExpression);
+      if (!isFinite(this.result)) {
+        throw new Error("Division by Zero");
+      }
+    } catch (error) {
+      throw new Error("Invalid expression");
+    }
+  }
+}
 
 module.exports = Calculator;
